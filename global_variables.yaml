@@ -1,0 +1,11 @@
+# MAIN VARIABLES YOU MIGHT WANT TO EDIT
+imitation_learning_dataset_folder: "imitation_learning_datasets/imitation_training_data2"
+path_to_simulator_executable: "/home/animated/Projects/donkeycar/DonkeySimLinux/donkey_sim.x86_64"
+
+
+# VARIABLES THAT PERTAIN TO VARIOUS SIMULATION CONFIGS. FOR THE MOST PART, YOU SHOULDN'T NEED TO TOUCH THIS
+simulation_config:
+  port: 9091
+  max_cte: 8
+  lidar_config: 
+    deg_per_sweep_inc: 1.0

@@ -16,14 +16,14 @@ L_ARB_texture_border_clamp GL_ARB_texture_buffer_object GL_ARB_texture_buffer_ob
 _10_10_10_rev GL_ARB_viewport_array GL_ATI_blend_equation_separate GL_ATI_texture_float GL_EXT_EGL_image_storage GL_EXT_EGL_image_storage_compression GL_EXT_EGL_sync GL_EXT_abgr GL_EXT_blend_equation_separate GL_EXT_debug_label GL_EXT_demote_to_helper_invocation GL_EXT_depth_bounds_test GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_framebuffer_object GL_EXT_framebuffer_sRGB GL_EXT_memory_object GL_EXT_memory_object_fd GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_pixel_buffer_object GL_EXT_polygon_offset_clamp GL_EXT_provoking_vertex GL_EXT_semaphore GL_EXT_semaphore_fd GL_EXT_shader_framebuffer_fetch GL_EXT_shader_framebuffer_fetch_non_coherent GL_EXT_shader_integer_mix GL_EXT_shader_samples_identical GL_EXT_texture_array GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_filter_anisotropic GL_EXT_texture_integer GL_EXT_texture_sRGB GL_EXT
 _texture_sRGB_R8 GL_EXT_texture_sRGB_decode GL_EXT_texture_shadow_lod GL_EXT_texture_shared_exponent GL_EXT_texture_snorm GL_EXT_texture_storage GL_EXT_texture_swizzle GL_EXT_timer_query GL_EXT_transform_feedback GL_EXT_vertex_array_bgra GL_EXT_vertex_attrib_64bit GL_IBM_multimode_draw_arrays GL_INTEL_blackhole_render GL_INTEL_conservative_rasterization GL_INTEL_performance_query GL_INTEL_shader_atomic_float_minmax GL_INTEL_shader_integer_functions2 GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_KHR_context_flush_control GL_KHR_debug GL_KHR_no_error GL_KHR_parallel_shader_compile GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_KHR_texture_compression_astc_ldr GL_KHR_texture_compression_astc_sliced_3d GL_MESA_framebuffer_flip_y GL_MESA_pack_invert GL_MESA_shader_integer_functions GL_MESA_texture_const_bandwidth GL_MESA_texture_signed_rgba GL_NV_alpha_to_coverage_dither_control GL_NV_compute_shader_derivatives GL_NV_conditional_render GL_NV_copy_image GL_NV_depth_clamp GL_N
 V_fragment_shader_interlock GL_NV_packed_depth_stencil GL_NV_texture_barrier GL_OES_EGL_image GL_S3_s3tc
-OPENGL LOG: Creating OpenGL 4.6 graphics device ; Context level  <OpenGL 4.5> ; Context handle 154689216
+OPENGL LOG: Creating OpenGL 4.6 graphics device ; Context level  <OpenGL 4.5> ; Context handle 310759504
 Begin MonoManager ReloadAssembly
-- Completed reload, in  0.035 seconds
+- Completed reload, in  0.090 seconds
 Default vsync count 0
 requesting resize 1860 x 1011
 resizing window to 1860 x 1011
 Desktop is 1920 x 1080 @ 60 Hz
-UnloadTime: 0.925057 ms
+UnloadTime: 1.316972 ms
 SDSandbox Server starting.
 
 Server Listening on: 0.0.0.0:9091
@@ -37,37 +37,18 @@ Server Listening on: 0.0.0.0:9092
 Waiting for a connection...
 
 Setting up 10 worker threads for Enlighten.
-  Thread -> id: 725dd29fc6c0 -> priority: 1 
-  Thread -> id: 725dd21fb6c0 -> priority: 1 
-  Thread -> id: 725dd19fa6c0 -> priority: 1 
-  Thread -> id: 725dd11f96c0 -> priority: 1 
-  Thread -> id: 725dd09f86c0 -> priority: 1 
-  Thread -> id: 725d7ffff6c0 -> priority: 1 
-  Thread -> id: 725d7f7fe6c0 -> priority: 1 
-  Thread -> id: 725d7effd6c0 -> priority: 1 
-  Thread -> id: 725d7e7fc6c0 -> priority: 1 
-  Thread -> id: 725d7dffb6c0 -> priority: 1 
-Waiting for a connection...
+  Thread -> id: 704123fff6c0 -> priority: 1 
+  Thread -> id: 7041237fe6c0 -> priority: 1 
+  Thread -> id: 704122ffd6c0 -> priority: 1 
+  Thread -> id: 7041227fc6c0 -> priority: 1 
+  Thread -> id: 704121ffb6c0 -> priority: 1 
+  Thread -> id: 7041217fa6c0 -> priority: 1 
+  Thread -> id: 704120ff96c0 -> priority: 1 
+  Thread -> id: 7040cffff6c0 -> priority: 1 
+  Thread -> id: 7040cf7fe6c0 -> priority: 1 
+  Thread -> id: 7040ceffd6c0 -> priority: 1 
+Server stopped.
 
-client connected.
+Server stopped.
 
-mini_monaco
-
-loaded scene
-
-Unloading 9 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 7.251014 ms
-JustOne removing instance.MainThDisp
-
-JustOne removing instance.SandboxServer
-
-JustOne removing instance.SandboxPrivateAPIServer
-
-Added timer
-
-car loaded.
-
-
-Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 6485.
-Total: 10.229715 ms (FindLiveObjects: 0.251273 ms CreateObjectMapping: 0.056454 ms MarkObjects: 1.349779 ms  DeleteObjects: 8.571895 ms)
-
+Waiting on threads to park on joinable thread list timed out.

@@ -1,168 +1,153 @@
 import numpy as np
 from pynput import keyboard
-from stable_baselines3 import PPO
-from stable_baselines3.common.env_util import make_vec_env
-from gym.envs.registration import register
 from gym_donkeycar.envs.donkey_env import * 
 from imitation.algorithms import bc
+from imitation.data.types import Trajectory
+from imitation.data import serialize
+import yaml
+from donkey_env_lidar import DonkeyEnvLidar
 
 
 
 
-throttle_command = 0.
-steering_command = 0.
+# ==============================================================================
+# GLOBAL VARIABLES
+# ==============================================================================
 
-def on_press(key: keyboard.KeyCode):
-    global steering_command, throttle_command
+GLOBAL_VARIABLES: dict = yaml.safe_load(open("global_variables.yaml", 'r'))
+
+IMITATION_LEARNING_DATASET_FOLDER = GLOBAL_VARIABLES["imitation_learning_dataset_folder"]
+PATH_TO_SIMULATOR_EXECUTABLE = GLOBAL_VARIABLES["path_to_simulator_executable"]
+DONKEYCAR_SIMULATION_CONFIG = GLOBAL_VARIABLES["simulation_config"]
+
+
+
+
+# ==============================================================================
+# KEYBOARD CALLBACKS
+# ==============================================================================
+
+keyboard_throttle_command = 0.
+keyboard_steering_command = 0.
+
+def keyboard_press_callback(key: keyboard.KeyCode):
+    global keyboard_steering_command, keyboard_throttle_command
     try:
         if key.char == "d":
-            steering_command = 1
+            keyboard_steering_command = 1
         elif key.char == "a":
-            steering_command = -1
+            keyboard_steering_command = -1
         elif key.char == "w":
-            throttle_command = 0.7
+            keyboard_throttle_command = 0.7
         elif key.char == "s":
-            throttle_command = -0.7
+            keyboard_throttle_command = -0.7
+            
+    except:
+        pass
+
+def keyboard_release_callback(key: keyboard.KeyCode):
+    global keyboard_steering_command, keyboard_throttle_command
+    
+    try:
+        if key.char == "d":
+            keyboard_steering_command = 0.
+        elif key.char == "a":
+            keyboard_steering_command = 0.
+        elif key.char == "w":
+            keyboard_throttle_command = 0.
+        elif key.char == "s":
+            keyboard_throttle_command = 0.
             
     except:
         pass
     
-
-
-def on_release(key: keyboard.KeyCode):
-    global steering_command, throttle_command
     
-    try:
-        if key.char == "d":
-            steering_command = 0.
-        elif key.char == "a":
-            steering_command = 0.
-        elif key.char == "w":
-            throttle_command = 0.
-        elif key.char == "s":
-            throttle_command = 0.
-            
-    except:
-        pass
-    
-    
-listener = keyboard.Listener(on_press=on_press, on_release=on_release)
+listener = keyboard.Listener(on_press=keyboard_press_callback, on_release=keyboard_release_callback)
 listener.start()
 
-# SET UP ENVIRONMENT
-# You can also launch the simulator separately
-# in that case, you don't need to pass a `conf` object
-
-# def make_donkey_env():
-#     global port
-    
-#     conf = { "exe_path" : exe_path, "port" : port}
-#     port+=1
-#     return DonkeyEnv(conf=conf, level="mini_monaco")
 
 
-# port = 9091
-conf = {
-    "exe_path" : f"/home/animated/Projects/donkeycar/DonkeySimLinux/donkey_sim.x86_64", 
-    "port" : 9091, 
-    "lidar_config": {"deg_per_sweep_inc": 1.0}, 
-    "max_cte": 8
+
+# ==============================================================================
+# SET UP THE DONKEYCAR SIMULATOR
+# ==============================================================================
+
+
+donkeycar_simulation_config = {
+    "exe_path" : PATH_TO_SIMULATOR_EXECUTABLE, 
+    **DONKEYCAR_SIMULATION_CONFIG
 }
+env = DonkeyEnvLidar(level="mini_monaco", conf=donkeycar_simulation_config)
 
-env = MiniMonacoEnv(conf=conf)
-
-# env = make_vec_env(lambda: DonkeyEnv(conf=conf, level="generated-track"), n_envs=2)
-# env = make_vec_env(make_donkey_env, n_envs=8)
-
-# model = PPO("CnnPolicy", env, verbose=1)
-# model.learn(total_timesteps=25000)
-# model.save("ppo")
+# This is the main array that contains data about all of the trajectories, which we will use as training data for the behavioural cloning
+list_of_trajectories: list[Trajectory] = []
 
 
-training_observations = []
-training_actions = []
-training_infos = []
-training_rewards = []
 
-current_lap_observations = []
-current_lap_actions = []
-current_lap_infos = []
-current_lap_rewards = []
+# ==============================================================================
+# RUN THE SIMULATOR WITH KEYBOARD CONTROL AND SAVE OBSERVATIONS AND ACTIONS
+# ==============================================================================
 
-current_number_of_laps_completed = 0
+for lap_index in range(1000):
 
-
-camera_observation = env.reset()
-lidar_observation = env.viewer.handler.lidar
-velocity_observation = np.array([env.viewer.handler.vel_x, env.viewer.handler.vel_y, env.viewer.handler.vel_z])
-observation = np.concatenate([lidar_observation, velocity_observation])
-current_lap_observations.append(observation)
-
-for t in range(100000):
+    current_lap_observations = []
+    current_lap_actions = []
     
-    action = np.array([steering_command, throttle_command])
-    
-    camera_observation, reward, done, info = env.step(action)
+    camera_observation = env.reset()
     lidar_observation = env.viewer.handler.lidar
     velocity_observation = np.array([env.viewer.handler.vel_x, env.viewer.handler.vel_y, env.viewer.handler.vel_z])
-    observation = np.concatenate([lidar_observation, velocity_observation])
     
+    # Append the velocity and lidar observations together so the RL agent can see both of them
+    observation = np.concatenate([lidar_observation, velocity_observation])
     current_lap_observations.append(observation)
-    current_lap_actions.append(action)
-    current_lap_infos.append(info)
-    current_lap_rewards.append(reward)
-
-
-    if (info["lap_count"] == 1):
-        current_number_of_laps_completed += 1
+            
+            
+    for time_step in range(10000000):
         
-        training_observations.append(current_lap_observations)
-        training_actions.append(current_lap_actions)
-        training_infos.append(current_lap_infos)
-        training_rewards.append(current_lap_rewards)
+        action = np.array([keyboard_steering_command, keyboard_throttle_command])
         
-        
-        print(f"len observations: {len(current_lap_observations)}")
-        print(f"len actions: {len(current_lap_actions)}") # TODO TEST EVERYTHING
-        print(f"len infos: {len(current_lap_infos)}")
-        print(f"len rewards: {len(current_lap_rewards)}")
-        print(f"len training_observations: {len(training_observations)}")
-        print(f"len training_actions: {len(training_actions)}")
-        print(f"len training_infos: {len(training_infos)}")
-        print(f"len training_rewards: {len(training_rewards)}")
-        print()
-        
-        np.save('imitation_learning_datasets/imitation_training_data1/training_observations.npy', np.array(training_observations, dtype=object))
-        np.save('imitation_learning_datasets/imitation_training_data1/training_actions.npy', np.array(training_actions, dtype=object))
-        np.save('imitation_learning_datasets/imitation_training_data1/training_infos.npy', np.array(training_infos, dtype=object))
-        np.save('imitation_learning_datasets/imitation_training_data1/training_rewards.npy', np.array(training_rewards, dtype=object))
-        
-        camera_observation = env.reset()
+        camera_observation, reward, done, info = env.step(action)
         lidar_observation = env.viewer.handler.lidar
         velocity_observation = np.array([env.viewer.handler.vel_x, env.viewer.handler.vel_y, env.viewer.handler.vel_z])
+    
+        # Append the velocity and lidar observations together so the RL agent can see both of them
         observation = np.concatenate([lidar_observation, velocity_observation])
-        
-        current_lap_observations = []
-        current_lap_actions = []
-        current_lap_infos = []
-        current_lap_rewards = []
         current_lap_observations.append(observation)
-        
-        
-    if (abs(info["cte"]) > 8) or (info["hit"] != "none"):
-        camera_observation = env.reset()
-        lidar_observation = env.viewer.handler.lidar
-        velocity_observation = np.array([env.viewer.handler.vel_x, env.viewer.handler.vel_y, env.viewer.handler.vel_z])
-        observation = np.concatenate([lidar_observation, velocity_observation])
-        
-        current_lap_observations = []
-        current_lap_actions = []
-        current_lap_infos = []
-        current_lap_rewards = []
-        current_lap_observations.append(observation)
+        current_lap_actions.append(action)
 
 
+        # If we finished the current lap
+        if (info["lap_count"] == 1):                    
+            list_of_trajectories.append(Trajectory(np.array(current_lap_observations), np.array(current_lap_actions), infos=None, terminal=True))  
+            serialize.save(f"{IMITATION_LEARNING_DATASET_FOLDER}", list_of_trajectories)
+            break
+        
+        # If we hit an object or we go too far off of the track, then we should not record the current lap
+        if (abs(info["cte"]) > 8) or (info["hit"] != "none"):
+            break
 
-# Exit the scene
 env.close()
 
+
+
+
+
+# ==============================================================================
+# TRAIN AND SAVE A BEHAVIOURAL CLONING ALGORITHM
+# ==============================================================================
+    
+
+trajectory_list = serialize.load(f"{IMITATION_LEARNING_DATASET_FOLDER}")
+
+
+bc_trainer = bc.BC(
+    observation_space= env.observation_space,
+    action_space=env.action_space,
+    demonstrations=trajectory_list,
+    rng = np.random.default_rng()
+)
+
+
+bc_trainer.train(n_epochs=300)
+
+bc_trainer.policy.save("imitation_learning_models/bc_policy_1000_epochs.zip")
