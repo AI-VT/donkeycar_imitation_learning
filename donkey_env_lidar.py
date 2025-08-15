@@ -5,7 +5,7 @@ from gymnasium import spaces
 
 class DonkeyEnvLidar(DonkeyEnv):
     """
-    A modified version of the DonkeyEnv that takes in a lidar and velocity observations. 
+    A modified version of the DonkeyEnv that takes in a lidar and velocity observations, which are often easier to learn from.
     """
     
     def __init__(self, level: str, conf: Optional[Dict[str, Any]] = None):
