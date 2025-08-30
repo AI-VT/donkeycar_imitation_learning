@@ -29,9 +29,9 @@ Scroll down to the point where you see these download files, and click on the do
 ![alt text](images/simulation_executable_image.png)
 
 
-Once you have downloaded the file, please put the file somewhere on your computer, and then save the path to the file. For example, if you are on Windows, and you save the file to your "Documents" folder, then it would be C:\Users\<PUT YOUR USERNAME HERE>\Documents\DonkeySimWin.zip for instance. Take this path, and then open the gym_donkeycar.ipynb file in VSCode and edit the value of the "PATH_TO_SIMULATOR_EXECUTABLE" variable.
+Once you have downloaded the file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you are on Windows, and you save the file to your "Documents" folder, then it would be C:\Users\<PUT YOUR USERNAME HERE>\Documents\DonkeySimWin\donkey_sim.exe for instance. Take this path, and then open the gym_donkeycar.ipynb file in VSCode and edit the value of the "PATH_TO_SIMULATOR_EXECUTABLE" variable.
 
-![alt text](images/simulation_executable_image.png)
+![alt text](images/gym_donkeycar_simulation_path.png)
 
 
 Once you have edited this variable, then everything should work properly! To run everything, now, all you have to do is press the run button on each cell to run each part of the code and go through the imitation learning!
