@@ -29,7 +29,15 @@ Scroll down to the point where you see these download files, and click on the do
 ![alt text](images/simulation_executable_image.png)
 
 
-Once you have downloaded the file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you are on Windows, and you save the file to your "Documents" folder, then it would be C:\Users\<PUT YOUR USERNAME HERE>\Documents\DonkeySimWin\donkey_sim.exe for instance. Take this path, and then open the gym_donkeycar.ipynb file in VSCode and edit the value of the "PATH_TO_SIMULATOR_EXECUTABLE" variable.
+Once you have downloaded the file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you are on Windows, and you save the file to your "Documents" folder, then it would be C:\Users\<PUT YOUR USERNAME HERE>\Documents\DonkeySimWin\donkey_sim.exe for instance. 
+
+On Linux for example, you would download DonkeySimLinux, unzip it, and then save the path to the executable file. In this instance, the executable file would be under DonkeySimLinux/donkey_sim.x86_64, and for Mac, the executable file would be under DonkeySimMac/donkey_sim.app/Contents/MacOS/donkey_sim
+
+
+PLEASE NOTE: If you are on Linux or Mac, then you have to run `chmod +x donkey_sim.x86_64` on Linux and `chmod +x donkey_sim` on Mac. Remember to run these commands in your terminal in the folder that contains these files.
+
+
+Once you have the path to the donkey_sim executable, take this path, and then open the gym_donkeycar.ipynb file in VSCode and edit the value of the "PATH_TO_SIMULATOR_EXECUTABLE" variable.
 
 ![alt text](images/gym_donkeycar_simulation_path.png)
 
