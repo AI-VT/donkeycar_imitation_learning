@@ -28,16 +28,40 @@ The final step to install everything you need to start racing is to download the
 Scroll down to the point where you see these download files, and click on the download file that corresponds to your operating system.
 ![alt text](images/simulation_executable_image.png)
 
-
-Once you have downloaded the file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you are on Windows, and you save the file to your "Documents" folder, then it would be C:\Users\<PUT YOUR USERNAME HERE>\Documents\DonkeySimWin\donkey_sim.exe for instance. 
-
-On Linux for example, you would download DonkeySimLinux, unzip it, and then save the path to the executable file. In this instance, the executable file would be under DonkeySimLinux/donkey_sim.x86_64, and for Mac, the executable file would be under DonkeySimMac/donkey_sim.app/Contents/MacOS/donkey_sim
+From here, there are slightly different installation instructions depending on your operating system, so make sure to follow the installation instructions corresponding to your operating system
 
 
-PLEASE NOTE: If you are on Linux or Mac, then you have to run `chmod +x donkey_sim.x86_64` on Linux and `chmod +x donkey_sim` on Mac. Remember to run these commands in your terminal in the folder that contains these files.
+<br>
+<br>
 
+## Windows Installation
 
-Once you have the path to the donkey_sim executable, take this path, and then open the gym_donkeycar.ipynb file in VSCode and edit the value of the "PATH_TO_SIMULATOR_EXECUTABLE" variable.
+On Windows, once you have downloaded the corresponding zip file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you save the file to your "Documents" folder, then it would be C:\Users\<PUT YOUR USERNAME HERE>\Documents\DonkeySimWin\donkey_sim.exe for instance. 
+
+<br>
+
+## Linux Installation
+
+On Linux, once you have downloaded the corresponding zip file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you save the file to your "Documents" folder, then it would be /home/<PUT YOUR USERNAME HERE>/Documents/DonkeySimLinux/donkey_sim.x86_64. After you have the executable on your computer, make sure that has the proper permissions with the following command:
+
+```sh
+chmod +x /home/<PUT YOUR USERNAME HERE>/Documents/DonkeySimLinux/donkey_sim.x86_64
+```
+
+<br>
+
+## MAC Installation
+
+On MAC, once you have downloaded the corresponding zip file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you save the file to your "Documents" folder, then it would be /Users/<PUT YOUR USERNAME HERE>/Documents/DonkeySimMac/donkey_sim.app/Contents/MacOS/donkey_sim. After you have the executable on your computer, make sure that has the proper permissions with the following command:
+
+```sh
+chmod +x /Users/<PUT YOUR USERNAME HERE>/Documents/DonkeySimMac/donkey_sim.app/Contents/MacOS/donkey_sim
+```
+
+<br>
+<br>
+
+**Once you have the path to the donkey_sim executable, take this path, and then open the gym_donkeycar.ipynb file in VSCode and edit the value of the "PATH_TO_SIMULATOR_EXECUTABLE" variable.**
 
 ![alt text](images/gym_donkeycar_simulation_path.png)
 
