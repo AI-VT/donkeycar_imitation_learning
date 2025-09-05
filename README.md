@@ -43,13 +43,13 @@ From here, there are slightly different installation instructions depending on y
 
 ## Windows Installation
 
-On Windows, once you have downloaded the corresponding zip file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you save the file to your "Documents" folder, then it would be C:\Users\<PUT YOUR USERNAME HERE>\Documents\DonkeySimWin\donkey_sim.exe for instance. 
+On Windows, once you have downloaded the corresponding zip file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you save the file to your "Documents" folder, then it would be ```C:\Users\<PUT YOUR USERNAME HERE>\Documents\DonkeySimWin\donkey_sim.exe``` for instance. 
 
 <br>
 
 ## Linux Installation
 
-On Linux, once you have downloaded the corresponding zip file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you save the file to your "Documents" folder, then it would be /home/<PUT YOUR USERNAME HERE>/Documents/DonkeySimLinux/donkey_sim.x86_64. After you have the executable on your computer, make sure that has the proper permissions with the following command:
+On Linux, once you have downloaded the corresponding zip file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you save the file to your "Documents" folder, then it would be ```/home/<PUT YOUR USERNAME HERE>/Documents/DonkeySimLinux/donkey_sim.x86_64```. After you have the executable on your computer, make sure that has the proper permissions with the following command:
 
 ```sh
 chmod +x /home/<PUT YOUR USERNAME HERE>/Documents/DonkeySimLinux/donkey_sim.x86_64
@@ -59,7 +59,7 @@ chmod +x /home/<PUT YOUR USERNAME HERE>/Documents/DonkeySimLinux/donkey_sim.x86_
 
 ## MAC Installation
 
-On MAC, once you have downloaded the corresponding zip file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you save the file to your "Documents" folder, then it would be /Users/<PUT YOUR USERNAME HERE>/Documents/DonkeySimMac/donkey_sim.app/Contents/MacOS/donkey_sim. After you have the executable on your computer, make sure that has the proper permissions with the following command:
+On MAC, once you have downloaded the corresponding zip file, please put the file somewhere on your computer, unzip it, and then save the path to the executable file. For example, if you save the file to your "Documents" folder, then it would be ```/Users/<PUT YOUR USERNAME HERE>/Documents/DonkeySimMac/donkey_sim.app/Contents/MacOS/donkey_sim```. After you have the executable on your computer, make sure that has the proper permissions with the following command:
 
 ```sh
 chmod +x /Users/<PUT YOUR USERNAME HERE>/Documents/DonkeySimMac/donkey_sim.app/Contents/MacOS/donkey_sim
