@@ -68,8 +68,11 @@ chmod +x /Users/<PUT YOUR USERNAME HERE>/Documents/DonkeySimMac/donkey_sim.app/C
 
 ![alt text](images/gym_donkeycar_simulation_path.png)
 
+**Also, ensure that the widget on the top left of the gym_donkeycar.ipynb file says donkey. When you first start the file, it will say select kernel. Click on that and select the donkey environment.**
 
-Once you have edited this variable, then everything should work properly! To run everything, now, all you have to do is press the run button on each cell to run each part of the code and go through the imitation learning!
+![alt text](images/conda_environment.png)
+
+Once you have edited this variable and ensured that you are using the ```donkey``` conda environment on vscode, then everything should work properly! To run everything, now, all you have to do is press the run button on each cell to run each part of the code and go through the imitation learning!
 
 ![alt text](images/run_button.png)
 
