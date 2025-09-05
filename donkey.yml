@@ -5,6 +5,9 @@ channels:
   - https://repo.anaconda.com/pkgs/main
   - https://repo.anaconda.com/pkgs/r
 dependencies:
+  - python=3.11.13=h1a3bd86_0
+  - pip=25.1=pyhc872135_2
+  
   - pip:
       - absl-py==2.3.1
       - aiohappyeyeballs==2.6.1
