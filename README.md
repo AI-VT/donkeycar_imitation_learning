@@ -21,6 +21,10 @@ conda env create -f donkey.yml -y
 
 This command will create a new donkey virtual environment, which will contain all of the python libraries necessary to run the donkeycar simulator.
 
+```sh
+code .
+```
+
 
 The final step to install everything you need to start racing is to download the simulation executable. To download the simulation executable, please find the latest version of the zip file here: https://github.com/tawnkramer/gym-donkeycar/releases.
 
