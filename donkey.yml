@@ -136,7 +136,6 @@ dependencies:
       - tensorflow-io-gcs-filesystem==0.37.1
       - termcolor==3.1.0
       - threadpoolctl==3.6.0
-      - torch==2.7.1
       - tornado==6.5.1
       - tqdm==4.67.1
       - triton==3.3.1
