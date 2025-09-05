@@ -138,7 +138,6 @@ dependencies:
       - threadpoolctl==3.6.0
       - tornado==6.5.1
       - tqdm==4.67.1
-      - triton==3.3.1
       - typing-inspection==0.4.1
       - tzdata==2025.2
       - urllib3==2.5.0
