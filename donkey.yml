@@ -32,7 +32,6 @@ dependencies:
       - docopt-ng==0.9.0
       - docutils==0.21.2
       - donkeycar==5.2.0
-      - evdev==1.9.2
       - farama-notifications==0.0.4
       - filelock==3.18.0
       - filetype==1.2.0
