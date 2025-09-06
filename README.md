@@ -1,7 +1,10 @@
 # <p style="text-align: center;"> How to Install All Required Dependencies</p>
 
-The first thing to do is to make sure that you have **VSCode** installed, whose installation instructions can be found here: https://code.visualstudio.com/Download 
+**NOTE**: Whenever any of VSCode, git, or Miniconda asks you to add things to "Path" during the installation, please say yes.
 
+The first thing to do is to make sure that you have **VSCode** installed, whose installation instructions can be found here: https://code.visualstudio.com/Download
+
+Then, make sure that you have **git** installed: https://git-scm.com/downloads
 
 Then, you need to make sure that you have installed **Miniconda**, whose download can be found here: https://www.anaconda.com/docs/getting-started/miniconda/install. **Miniconda** allows us to manage python packages in an isolated way, so that we basically ignore package dependencies. 
 
