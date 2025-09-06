@@ -10,6 +10,8 @@ Then, you need to make sure that you have installed **Miniconda**, whose downloa
 
 Once **Miniconda** is installed, please run the following the following commands in an Anaconda Powershell Terminal:
 
+![alt text](images/anaconda_powershell.png)
+
 ```sh
 git clone https://github.com/AI-VT/donkeycar_imitation_learning
 ```
