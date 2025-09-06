@@ -16,7 +16,7 @@ cd donkeycar_imitation_learning
 ```
 
 ```sh
-conda env create -f donkey.yml -y
+conda env create -f donkey.yml
 ```
 
 This command will create a new donkey virtual environment, which will contain all of the python libraries necessary to run the donkeycar simulator.
