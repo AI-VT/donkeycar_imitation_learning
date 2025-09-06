@@ -66,12 +66,34 @@ chmod +x /Users/<PUT YOUR USERNAME HERE>/Documents/DonkeySimMac/donkey_sim.app/C
 
 <br>
 <br>
+<br>
+<br>
+<br>
+
+
+# How to Run The Simulation and Start Training an Imitation Learning Model
+
+
+<br>
+<br>
+
 
 **Once you have the path to the donkey_sim executable, take this path, and then open the gym_donkeycar.ipynb file in VSCode and edit the value of the "PATH_TO_SIMULATOR_EXECUTABLE" variable.**
 
 ![alt text](images/gym_donkeycar_simulation_path.png)
 
-**Also, ensure that the widget on the top right of the gym_donkeycar.ipynb file says donkey. When you first start the file, it will say select kernel. Click on that and select the donkey environment.**
+**Also, ensure that the widget on the top right of the gym_donkeycar.ipynb file says donkey. When you first start the file, it will say select kernel. Click on install/ enable suggested extensions**
+
+![alt text](images/conda_environment1.png)
+
+**Then, click on "python environments"**
+
+![alt text](images/conda_environment2.png)
+
+**Then, click on the environment called "donkey"**
+
+![alt text](images/conda_environment3.png)
+
 
 ![alt text](images/conda_environment.png)
 
