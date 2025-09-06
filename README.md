@@ -68,7 +68,7 @@ chmod +x /Users/<PUT YOUR USERNAME HERE>/Documents/DonkeySimMac/donkey_sim.app/C
 
 ![alt text](images/gym_donkeycar_simulation_path.png)
 
-**Also, ensure that the widget on the top left of the gym_donkeycar.ipynb file says donkey. When you first start the file, it will say select kernel. Click on that and select the donkey environment.**
+**Also, ensure that the widget on the top right of the gym_donkeycar.ipynb file says donkey. When you first start the file, it will say select kernel. Click on that and select the donkey environment.**
 
 ![alt text](images/conda_environment.png)
 
