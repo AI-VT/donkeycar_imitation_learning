@@ -5,7 +5,7 @@ The first thing to do is to make sure that you have **VSCode** installed, whose 
 
 Then, you need to make sure that you have installed **Miniconda**, whose download can be found here: https://www.anaconda.com/docs/getting-started/miniconda/install. **Miniconda** allows us to manage python packages in an isolated way, so that we basically ignore package dependencies. 
 
-Once **Miniconda** is installed, please run the following the following commands in a terminal:
+Once **Miniconda** is installed, please run the following the following commands in an Anaconda Powershell Terminal:
 
 ```sh
 git clone https://github.com/AI-VT/donkeycar_imitation_learning
