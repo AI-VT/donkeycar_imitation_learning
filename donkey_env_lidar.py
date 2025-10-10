@@ -32,7 +32,24 @@ class DonkeyEnvLidar(DonkeyEnv):
             high=1,
             dtype=np.float32
         )
-        
+    
+    def compute_reward(self, info: dict, done: bool):
+        speed = info.get("speed", 0)
+        cte = abs(info.get("cte", 0))
+        progress = info.get("progress", 0)
+
+        # Encourage forward progress and speed
+        reward = speed * 0.1 + progress * 10.0
+
+        # Penalize deviation from track center
+        reward -= 0.05 * (cte ** 2)
+
+        # Harsh penalty for leaving track or crashing
+        if done and cte > 2.0:
+            reward -= 100.0
+
+        return reward
+
 
     def step(self, action: np.ndarray) -> Tuple[np.ndarray, float, bool, Dict[str, Any]]:
         camera_observation, reward, done, info = super().step(action)
@@ -43,10 +60,13 @@ class DonkeyEnvLidar(DonkeyEnv):
         # Append the velocity and lidar observations together so the RL agent can see both of them
         full_observation = np.concatenate([lidar_observation, velocity_observation])
         
-        return full_observation, reward, done, info
+        reward = self.compute_reward(info=info, done=done)
+        print(reward)
+        print("hi")
+        return full_observation, reward, done, done, info
     
     
-    def reset(self) -> np.ndarray:
+    def reset(self, seed=None) -> tuple[np.ndarray, dict]:
         camera_observation = super().reset()
         
         lidar_observation = self.viewer.handler.lidar
@@ -55,4 +75,4 @@ class DonkeyEnvLidar(DonkeyEnv):
         # Append the velocity and lidar observations together so the RL agent can see both of them
         full_observation = np.concatenate([lidar_observation, velocity_observation])
 
-        return full_observation
+        return full_observation, {}
