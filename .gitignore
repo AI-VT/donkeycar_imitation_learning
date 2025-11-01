@@ -3,3 +3,5 @@ old/**
 __pycache__/**
 imitation_learning_datasets
 imitation_learning_models
+
+!imitation_learning_models/example_vision_policy_generated_track.zip
