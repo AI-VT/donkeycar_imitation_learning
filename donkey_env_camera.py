@@ -58,7 +58,7 @@ class DonkeyEnvCamera(DonkeyEnv):
         done = done or info["lap_count"] == 1 or (time.time() - self.start_time) > 40 # if we complete the lap or we are in the environment for too long then we are done
 
         camera_observation = np.moveaxis(camera_observation, -1, 0)
-        return camera_observation, reward, done, info
+        return camera_observation, reward, done, done, info
     
     
     def reset(self, seed=None) -> tuple[np.ndarray, dict]:
@@ -68,4 +68,4 @@ class DonkeyEnvCamera(DonkeyEnv):
         
         camera_observation = np.moveaxis(camera_observation, -1, 0)
 
-        return camera_observation
+        return camera_observation, {}

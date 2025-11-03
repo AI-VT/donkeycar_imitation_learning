@@ -73,7 +73,7 @@ class DonkeyEnvLidar(DonkeyEnv):
         
         done = done or info["lap_count"] == 1 or (time.time() - self.start_time) > 40 # if we complete the lap or we are in the environment for too long then we are done
 
-        return full_observation, reward, done, info
+        return full_observation, reward, done, done, info
     
     
     def reset(self, seed=None) -> tuple[np.ndarray, dict]:
@@ -87,4 +87,4 @@ class DonkeyEnvLidar(DonkeyEnv):
         # Append the velocity and lidar observations together so the RL agent can see both of them
         full_observation = np.concatenate([lidar_observation, velocity_observation])
 
-        return full_observation
+        return full_observation, {}
